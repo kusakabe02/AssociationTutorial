@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # 画像保存のためImageとの関連付を行う
+  mount_uploader :image, ImageUploader
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   #追加 Tweetテーブル用
@@ -24,5 +27,5 @@ class User < ApplicationRecord
   # 現在自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
   # 既にフォロー済みか？
   passive_relationships.find_by(following_id: user.id).present?
-end
+  end
 end

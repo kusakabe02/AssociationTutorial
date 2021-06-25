@@ -54,3 +54,20 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 2021/05/25 課題のため記述を追記
 gem 'devise'
+#2021/06/19 AWS  S3を画像の保存先とする課題のため、画像のアップロード機能を追加
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
+gem 'dotenv-rails'
+
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+end
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end

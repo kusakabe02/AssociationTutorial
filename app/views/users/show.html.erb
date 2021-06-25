@@ -1,6 +1,22 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 <hr>
+<!-- 画像アップロード -->
+<% if @user.image? %>
+  <p>
+    <strong>設定中のアイコン:</strong>
+    <%= image_tag @user.image.url , size: "150x150" %>
+  </p>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <p>
+    <%=f.label :"アイコンを変更する" %>
+    <%=f.file_field :image %>
+  </p>
+  <%= f.submit :"変更",class: "btn btn-primary btn-block #{ 'disabled' if @btnif }" =%>
+<% end %>
 <p><span>email: </span><%= @user.email %></p>
 
 <!-- フォロー -->

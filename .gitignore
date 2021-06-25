@@ -17,3 +17,7 @@
 /yarn-error.log
 
 .byebug_history
+
+# 保存した画像をGitHubにはあげないように設定
+/public/uploads
+/ .env

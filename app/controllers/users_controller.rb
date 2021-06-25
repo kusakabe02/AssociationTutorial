@@ -20,4 +20,15 @@ class UsersController < ApplicationController
     @users = user.followers
   end
 
+  #画像保存するために追加
+  def update
+      @user = User.find(params[:id])
+      @user.update(user_params)
+    redirect_to "/users/#{@user.id}"
+  end
+
+  def user_params
+      params.require(:user).permit(:image)
+  end
+
 end
